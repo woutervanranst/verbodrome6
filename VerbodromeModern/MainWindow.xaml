@@ -1,0 +1,12 @@
+<Window x:Class="VerbodromeModern.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        Title="Verbodrome Modern" Height="300" Width="400">
+    <StackPanel Margin="10">
+        <TextBlock x:Name="QuestionText" FontSize="16" TextWrapping="Wrap"/>
+        <TextBox x:Name="AnswerBox" Margin="0,10,0,0"/>
+        <Button Content="Check" Width="80" Margin="0,5,0,0" Click="CheckButton_Click"/>
+        <TextBlock x:Name="Feedback" Margin="0,10,0,0"/>
+        <TextBlock x:Name="ScoreText" Margin="0,10,0,0"/>
+    </StackPanel>
+</Window>

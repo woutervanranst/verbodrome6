@@ -1,0 +1,23 @@
+name: Build
+
+on:
+  push:
+    branches: [ main ]
+  pull_request:
+    branches: [ main ]
+
+jobs:
+  build:
+    runs-on: windows-latest
+    steps:
+      - uses: actions/checkout@v3
+      - uses: actions/setup-dotnet@v3
+        with:
+          dotnet-version: '8.0.x'
+      - name: Publish
+        run: |
+          dotnet publish VerbodromeModern/VerbodromeModern.csproj -c Release -r win-x64 -p:PublishSingleFile=true -p:SelfContained=true -o publish
+      - uses: actions/upload-artifact@v3
+        with:
+          name: VerbodromeModern
+          path: publish
