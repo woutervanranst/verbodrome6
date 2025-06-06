@@ -22,6 +22,21 @@ namespace VerbodromeModern
         public int Total => _stats.Values.Sum(e => e.Total);
         public double Percentage => Total == 0 ? 0 : (double)Correct / Total * 100.0;
 
+        public (int Correct, int Total) StatsForTense(string tense)
+        {
+            int correct = 0;
+            int total = 0;
+            foreach (var (key, value) in _stats)
+            {
+                if (key.Tense == tense)
+                {
+                    correct += value.Correct;
+                    total += value.Total;
+                }
+            }
+            return (correct, total);
+        }
+
         public void Load(SqliteConnection connection)
         {
             using var cmd = connection.CreateCommand();
